@@ -2,9 +2,6 @@
 import os
 import time
 
-# ==========================================
-# PLAYER DATA
-# ==========================================
 player_inventory = set()
 
 game_state = {
@@ -34,9 +31,7 @@ def get_choice(prompt, minimum, maximum):
     return None
 
 
-# ==========================================
-# ROOM DATA
-# ==========================================
+
 kakyoin_room = {
     "description": (
         "You enter Kakyoin's tidy bedroom. "
@@ -108,9 +103,6 @@ jojo_room = {
 }
 
 
-# ==========================================
-# NPC AND QUEST DATA
-# ==========================================
 npcs = {
     "old_man": {
         "name": "Old Man",
@@ -133,9 +125,7 @@ npcs = {
 }
 
 
-# ==========================================
-# OLD MAN DIALOGUE AND QUEST
-# ==========================================
+
 def talk_to_old_man():
     npc = npcs["old_man"]
     quest = npc["quest"]
@@ -166,9 +156,7 @@ def talk_to_old_man():
     pause()
 
 
-# ==========================================
-# GENERAL ROOM EXPLORATION
-# ==========================================
+
 def explore_room(room, room_name, collectible_choices=None):
     if collectible_choices is None:
         collectible_choices = set()
@@ -232,10 +220,10 @@ def explore_room(room, room_name, collectible_choices=None):
 
             else:
                 answer = input(
-                    "\nPick up the pocket watch? (y/n): "
+                    "\nPick up the pocket watch? (yes/no): "
                 ).strip().lower()
 
-                if answer == "y":
+                if answer == "yes":
                     player_inventory.add(item_id)
                     print("You picked up the pocket watch!")
 
@@ -245,17 +233,14 @@ def explore_room(room, room_name, collectible_choices=None):
             if item_id in player_inventory:
                 print("You already have the notebook.")
             else:
-                answer = input("\nPick up the notebook? (y/n): ").strip().lower()
-                if answer == "y":
+                answer = input("\nPick up the notebook? (yes/no): ").strip().lower()
+                if answer == "yes":
                     player_inventory.add(item_id)
                     print("You picked up the notebook!")
 
         input("\nPress Enter to continue...")
 
 
-# ==========================================
-# IGGY'S ROOM: SPECIAL MECHANICS
-# ==========================================
 def room_of_iggy():
     while True:
         clear_screen()
@@ -386,9 +371,6 @@ def room_of_iggy():
         pause()
 
 
-# ==========================================
-# OTHER ROOM FUNCTIONS
-# ==========================================
 def room_of_kakyoin():
     explore_room(kakyoin_room, "Kakyoin's Room")
 
@@ -416,10 +398,6 @@ def room_of_jojo():
         collectible_choices={5}
     )
 
-
-# ==========================================
-# INVENTORY
-# ==========================================
 def show_inventory():
     clear_screen()
     print("====== INVENTORY ======\n")
@@ -432,10 +410,6 @@ def show_inventory():
 
     pause()
 
-
-# ==========================================
-# MAIN MENU
-# ==========================================
 def main():
     while True:
         clear_screen()
@@ -475,10 +449,6 @@ def main():
                 print("\nYou leave the building. Goodbye!")
                 break
 
-
-# ==========================================
-# START GAME
-# ==========================================
 if __name__ == "__main__":
     clear_screen()
 
